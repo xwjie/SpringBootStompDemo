@@ -26,7 +26,9 @@ public class BaseWebSocketConfig {
 
 每一个链接会新创建一个实例，所以完全可以把Session做为属性放在类里面。
 
-这个bean的作用域【应该】是prototype。在里面注入其他的bean没有成功。
+这个bean的作用域【应该】是prototype。`@ServerEndpoint` 在里面注入其他的bean没有成功。增加了 @Scope（TARGET_CLASS）也不行。
+
+所以暂时用静态方法。
 
 ```Java
 @ServerEndpoint(value = "/basews")
@@ -125,8 +127,9 @@ var ws2 = new WebSocket("ws://127.0.0.1:8080/basews");
 ![chrome](/pictures/base-sb1.png)
 
 
-# junit 笔记
+# spring 笔记
 
+## 随机端口
 使用随机端口，就可以启动2个SpringBoot了。使用 `@LocalServerPort` 注入当前的服务的端口。
 
 ```Java
@@ -138,4 +141,14 @@ public class GreetingIntegrationTests {
   private int port;
 
 }
+```
+
+## 代码修改后自动重启
+
+```XML
+<!-- 更新代码自动重启 -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-devtools</artifactId>
+</dependency>
 ```

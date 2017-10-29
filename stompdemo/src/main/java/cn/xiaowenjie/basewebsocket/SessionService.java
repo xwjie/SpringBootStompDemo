@@ -11,7 +11,7 @@ import lombok.SneakyThrows;
 /**
  * 处理websocket的Session
  * 
- * TODO：实际应用如果需要注意Map的强引用导致的内存泄漏
+ * TODO：实际应用需要注意避免Map的强引用导致的内存泄漏
  * 
  * @author 肖文杰 https://github.com/xwjie/
  *

@@ -22,7 +22,7 @@ public class BaseWebSocket {
 		System.out.println("\n-----new BaseWebSocket-----\n");
 	}
 
-	// FIXME 无法注入bean ?
+	// FIXME @ServerEndpoint比较特殊，无法注入单例的bean ?
 	// @Autowired
 	// SessionService sessionService;
 
