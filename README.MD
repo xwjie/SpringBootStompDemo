@@ -126,6 +126,32 @@ var ws2 = new WebSocket("ws://127.0.0.1:8080/basews");
 
 ![chrome](/pictures/base-sb1.png)
 
+# WebSocket 协议简单分析
+
+建立连接使用http协议，服务器返回101切换协议。因为是http协议，所以可以在小提琴fiddler上监控到。
+
+![chrome](/pictures/fiddler1.png)
+
+可以看到cookie也带了，就是一个普通的http请求，只是多了一些头。
+
+
+101之后切换协议，之后就不再是http协议了（但是端口还是http的8080），fiddler上无法监控到，但chrome上可以看到对应的frame帧。
+
+![chrome](/pictures/chromeconsole2.png)
+
+
+发送内容需要使用抓包工具，这里用的是wireshark大白鲨。
+
+![chrome](/pictures/wireshark1.png)
+
+
+可以设别为websocket协议，可以对着协议看每一个字节的含义。
+
+![chrome](/pictures/wireshark2.png)
+
+
+大白鲨如何抓本机的包，参考这里 https://www.bbsmax.com/A/A2dmxVpg5e/ 。 我这里使用的第二种，第一种方法才看到。
+
 
 # spring 笔记
 
